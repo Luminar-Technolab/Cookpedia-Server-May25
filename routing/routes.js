@@ -8,5 +8,7 @@ const routes = express.Router()
 routes.get('/recipes/all',recipeController.getAllRecipesController)
 //register
 routes.post('/register',userController.registerController)
+//login
+routes.post('/login',userController.loginController)
 
 module.exports = routes
