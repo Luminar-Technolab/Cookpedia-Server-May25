@@ -3,6 +3,7 @@ const recipeController = require('../controllers/recipeController')
 const userController = require('../controllers/userController')
 const jwtMiddleware = require('../middleware/jwtMiddleware')
 const downloadController = require('../controllers/downloadController')
+const saveController = require('../controllers/saveController')
 
 const routes = express.Router()
 
@@ -18,5 +19,11 @@ routes.get('/recipes/:id/view',jwtMiddleware,recipeController.viewRecipesControl
 routes.get('/related-recipes',jwtMiddleware,recipeController.getRelatedRecipesController)
 //add to download
 routes.put('/recipes/:id/download',jwtMiddleware,downloadController.addToDownloadController)
+//save recipe
+routes.post('/recipes/:id/save',jwtMiddleware,saveController.addToCollectionController)
+//get save recipe
+routes.get('/recipes/saved',jwtMiddleware,saveController.getSavedRecipesController)
+//delete save recipe
+routes.delete('/save-recipes/:id/remove',jwtMiddleware,saveController.deleteSaveRecipeController)
 
 module.exports = routes
