@@ -45,3 +45,24 @@ exports.loginController = async (req,res)=>{
         res.status(500).json(err)
      }
 }
+
+//update user
+exports.updateUserProfileController = async (req,res)=>{
+    console.log("Inside updateUserProfileController");
+    const {username,password,profile} = req.body
+    // console.log(profile)
+    const {id} = req.params
+    try{
+        const existingUser = await users.findById({_id:id})
+        existingUser.username = username
+        existingUser.profile = profile
+        if(password!=""){
+            const encryptPassword =  await bcrypt.hash(password,10)
+            existingUser.password = encryptPassword
+        }
+       await existingUser.save()
+        res.status(200).json(existingUser)
+    }catch(err){
+        res.status(500).json(err)
+    }
+}
