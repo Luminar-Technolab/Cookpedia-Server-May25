@@ -1,4 +1,5 @@
-const saveRecipes = require('../models/saveRecipesModel')
+const saveRecipes = require('../models/saveRecipesModel');
+const users = require('../models/userModel');
 
 //addd to collection
 exports.addToCollectionController = async (req,res)=>{
@@ -47,3 +48,4 @@ exports.deleteSaveRecipeController = async (req,res)=>{
         res.status(500).json(err)
     }
 }
+
