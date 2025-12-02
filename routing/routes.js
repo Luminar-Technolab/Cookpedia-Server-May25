@@ -48,5 +48,11 @@ routes.get('/downloads',adminJwtMiddleware,downloadController.getDownloadListCon
 routes.get('/feedbacks',adminJwtMiddleware,feedbackController.getFeedbackListController)
 //update feedback - admin
 routes.put('/feedbacks/:id/edit',adminJwtMiddleware,feedbackController.updateFeedbackStatusController)
+//add recipe - admin
+routes.post('/recipes/add',adminJwtMiddleware,recipeController.addRecipeController)
+//remove recipe - admin
+routes.delete('/recipes/:id',adminJwtMiddleware,recipeController.removeRecipeController)
+//edit recipe - admin
+routes.put('/recipes/:id',adminJwtMiddleware,recipeController.updateRecipeController)
 
 module.exports = routes
