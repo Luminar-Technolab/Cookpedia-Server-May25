@@ -43,7 +43,7 @@ routes.post('/users/:id/edit',jwtMiddleware,userController.updateUserProfileCont
 //get all user - admin
 routes.get('/users',adminJwtMiddleware,userController.getAllUsersController)
 //get all downloads - admin
-routes.get('/downloads',adminJwtMiddleware,downloadController.getDownloadListController)
+routes.get('/downloads',jwtMiddleware,downloadController.getDownloadListController)
 //get all feedback - admin
 routes.get('/feedbacks',adminJwtMiddleware,feedbackController.getFeedbackListController)
 //update feedback - admin
